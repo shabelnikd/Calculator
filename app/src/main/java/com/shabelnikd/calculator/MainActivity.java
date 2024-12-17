@@ -1,6 +1,9 @@
 package com.shabelnikd.calculator;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -81,6 +84,15 @@ public class MainActivity extends AppCompatActivity {
                 textView.setText(df.format(a));
                 currentOperation = 0;
                 isDotted = false;
+
+                Intent intent = new Intent(MainActivity.this, BoredActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putDouble("Result", a);
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+
+
             } else if (view.getId() == R.id.btn_percent){
                 b = Double.parseDouble(getFormattedTextView());
                 textView.setText(df.format(a));
